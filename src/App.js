@@ -39,7 +39,7 @@ export const useMousePosition = () => {
 };
 
 function clickHandler(position){
-  console.log(position)
+  console.log("there",position)
 }
 
 function Home() {
