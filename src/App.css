@@ -1,0 +1,22 @@
+.App{
+  background-color: #373a37;
+  color: whitesmoke;
+}
+.header{
+  text-align: center;
+  height: 100px;
+  align-self: center;
+}
+.container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.test-map{
+  width: 800px;
+  height: 700px;
+  border: 10px solid rebeccapurple;
+}
+.footer{
+  text-align: center;
+}
