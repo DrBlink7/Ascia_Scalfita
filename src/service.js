@@ -29,15 +29,19 @@ export function View(containerColor, mapSrc, handlerName) {
   let history = useHistory();
   let match = useRouteMatch();
   return (
-  <div className={containerColor}>
-    <Head whereAreYou={match.url} />
-    <div className="container">
-      <div className="map" onClick={() => {
-        history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY));
-      }}>
-        <img src={mapSrc} alt={mapSrc}></img>
+    <div className={containerColor}>
+      <Head whereAreYou={match.url} />
+      <div className="container">
+        <div className="map" onClick={() => {
+          history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY));
+        }}>
+          <img src={mapSrc} alt={mapSrc}></img>
+        </div>
       </div>
-    </div>
-    <Footer position={position} />
-  </div>);
+      <Footer position={position} />
+      {
+        match.url === "/Lorynn_Kingdom" ? "" :
+          <button onClick={() => history.goBack()}>back</button>
+      }
+    </div>);
 }

@@ -4,6 +4,7 @@ export function LorynnKingdom(){
   return View("App","/test.png",LorynnKingdomClickHandler)
 }
 
+
 export const LorynnKingdomClickHandler = (x, y) => {
   let clickPos = ""
   /**

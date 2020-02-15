@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import { Head } from "./Head";
-import './Isole.css';
+import './IsoleEsterne.css';
 
 export function IsolaDelFaro() {
   let history = useHistory();
