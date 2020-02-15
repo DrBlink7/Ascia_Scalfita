@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory, NavLink, useParams, useRouteMatch } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import './App.css'
 
@@ -8,17 +8,17 @@ export function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/home">
+          <Route path="/Lorynn_Kingdom">
             <Home />
           </Route>
-          <Route path="/test">
+          <Route path="/isolaDelFaro">
             <Test />
           </Route>
-          <Route path="/prova">
+          <Route path="/isolaBoschetto">
             <Prova />
           </Route>
           <Route path="/">
-            <Redirect to={"/Home"} />
+            <Redirect to={"/Lorynn_Kingdom"} />
           </Route>
         </Switch>
       </div>
@@ -34,21 +34,22 @@ export const useMousePosition = () => {
     }
     window.addEventListener("mousemove", setFromEvent);
     return () => {
-      window.removeEventListener("mousemove", setFromEvent);
+      window.removeEventListener("click", setFromEvent);
     };
   }, []);
   return position;
 };
 
-function clickHandler(x, y) {
-  console.log(x, y)
+export const clickHandler = (x, y) => {
   let clickPos = ""
   /**
    *  y: 141 - 187
    *  x: 545 - 605
    * */
-  if ((x >= 545 && x <= 605) && (y >= 141 && y <= 187))
+  if ((x >= 545 && x <= 605) && (y >= 141 && y <= 187)) {
     clickPos = "isolaBoschetto"
+
+  }
   /**
    * x: 474 - 515
    * y: 118 - 148
@@ -58,22 +59,50 @@ function clickHandler(x, y) {
   }
   else
     clickPos = "not registered"
-  console.log("hai clickato: ", clickPos)
+  return "/" + clickPos
 
 }
 
 function Home() {
-  let position = useMousePosition();
+  let position = useMousePosition()
+  let history = useHistory();
+  let match = useRouteMatch();
+
   return (
     <div className="App">
-      <div className="header">head</div>
+      <Head whereAreYou={match.url}
+      // temp ={clickHandler(position.x - position.posX, position.y - position.posY)} 
+      />
       <div className="container">
-        <div className="test-map" onClick={() => clickHandler(position.x - position.posX, position.y - position.posY)}>
+        <div className="test-map" onClick={() => {
+          history.push(clickHandler(position.x - position.posX, position.y - position.posY))
+        }
+        }>
           <img src="/test.png" alt="test-map"></img>
         </div>
       </div>
-      <div className="footer"><div>
-        {isNaN(position.x - position.posX) ?
+      <Footer position={position}/>
+    </div>
+  )
+
+  function Head({whereAreYou}) {
+    let location = whereAreYou.replace("/","")
+    location = location.replace("_"," ")
+    return (
+    <div className="header">
+      Ciao, benvenuto in <br />
+      {location}
+    </div>
+    )
+  }
+}
+
+function Footer({position}) {
+  return (
+    <div className="footer">
+      <div>
+        {
+        isNaN(position.x - position.posX) ?
           ""
           :
           position.x - position.posX + " : "
@@ -85,19 +114,22 @@ function Home() {
             position.y - position.posY}
         <br />
       </div>
-      </div>
     </div>
   )
 }
 
 function Test() {
+  let history = useHistory();
   return <>
     Test
+    <button onClick={() => history.goBack()}>back</button>
   </>
 }
 
 function Prova() {
+  let history = useHistory();
   return <>
     Prova
+    <button onClick={() => history.goBack()}>back</button>
   </>
 }
