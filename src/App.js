@@ -8,14 +8,14 @@ export function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/Lorynn_Kingdom">
+          <Route exact path="/Lorynn_Kingdom">
             <Home />
           </Route>
-          <Route path="/isolaDelFaro">
-            <Test />
+          <Route path="/Lorynn_Kingdom/IsolaDelFaro">
+            <IsolaDelFaro />
           </Route>
-          <Route path="/isolaBoschetto">
-            <Prova />
+          <Route path="/Lorynn_Kingdom/IsolaBoschetto">
+            <IsolaBoschetto />
           </Route>
           <Route path="/">
             <Redirect to={"/Lorynn_Kingdom"} />
@@ -47,7 +47,7 @@ export const clickHandler = (x, y) => {
    *  x: 545 - 605
    * */
   if ((x >= 545 && x <= 605) && (y >= 141 && y <= 187)) {
-    clickPos = "isolaBoschetto"
+    clickPos = "IsolaBoschetto"
 
   }
   /**
@@ -55,7 +55,7 @@ export const clickHandler = (x, y) => {
    * y: 118 - 148
    */
   else if ((x >= 474 && x <= 515) && (y >= 118 && y <= 148)) {
-    clickPos = "isolaDelFaro"
+    clickPos = "IsolaDelFaro"
   }
   else
     clickPos = "not registered"
@@ -75,7 +75,8 @@ function Home() {
       />
       <div className="container">
         <div className="test-map" onClick={() => {
-          history.push(clickHandler(position.x - position.posX, position.y - position.posY))
+          // <Redirect to = {`${match.path}/${clickHandler(position.x - position.posX, position.y - position.posY)}`} />
+          history.push(match.path+clickHandler(position.x - position.posX, position.y - position.posY))
         }
         }>
           <img src="/test.png" alt="test-map"></img>
@@ -118,7 +119,7 @@ function Footer({position}) {
   )
 }
 
-function Test() {
+function IsolaDelFaro() {
   let history = useHistory();
   return <>
     Test
@@ -126,7 +127,7 @@ function Test() {
   </>
 }
 
-function Prova() {
+function IsolaBoschetto() {
   let history = useHistory();
   return <>
     Prova
