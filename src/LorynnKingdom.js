@@ -1,24 +1,7 @@
-import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
-import { Head } from './Head';
-import { Footer } from './Footer';
-import { useMousePosition } from './service';
+import { View } from './service';
 
-export function LorynnKingdom() {
-  let position = useMousePosition();
-  let history = useHistory();
-  let match = useRouteMatch();
-  return (<div className="App">
-    <Head whereAreYou={match.url} />
-    <div className="container">
-      <div className="test-map" onClick={() => {
-        history.push(match.path + LorynnKingdomClickHandler(position.x - position.posX, position.y - position.posY));
-      }}>
-        <img src="/test.png" alt="test-map"></img>
-      </div>
-    </div>
-    <Footer position={position} />
-  </div>);
+export function LorynnKingdom(){
+  return View("App","/test.png",LorynnKingdomClickHandler)
 }
 
 export const LorynnKingdomClickHandler = (x, y) => {
@@ -29,7 +12,6 @@ export const LorynnKingdomClickHandler = (x, y) => {
    * */
   if ((x >= 545 && x <= 605) && (y >= 141 && y <= 187)) {
     clickPos = "Isola_del_Boschetto"
-
   }
   /**
    * x: 474 - 515

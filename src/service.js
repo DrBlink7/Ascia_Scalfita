@@ -1,4 +1,8 @@
+import React from 'react';
 import { useState, useEffect } from "react";
+import { useHistory, useRouteMatch } from 'react-router-dom';
+import { Head } from './Head';
+import { Footer } from './Footer';
 
 export function cleanUpUrl(whereAreYou) {
   let location = whereAreYou.replace(/\//gi, ' ');
@@ -19,3 +23,21 @@ export const useMousePosition = () => {
   }, []);
   return position;
 };
+
+export function View(containerColor, mapSrc, handlerName) {
+  let position = useMousePosition();
+  let history = useHistory();
+  let match = useRouteMatch();
+  return (
+  <div className={containerColor}>
+    <Head whereAreYou={match.url} />
+    <div className="container">
+      <div className="map" onClick={() => {
+        history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY));
+      }}>
+        <img src={mapSrc} alt={mapSrc}></img>
+      </div>
+    </div>
+    <Footer position={position} />
+  </div>);
+}
