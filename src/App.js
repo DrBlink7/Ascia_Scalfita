@@ -1,7 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect, useHistory, NavLink, useParams, useRouteMatch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory, useRouteMatch } from 'react-router-dom'
 import { useState, useEffect } from "react";
+import { IsolaDelFaro } from './IsolaDelFaro';
 import './App.css'
+import { Head } from './Head';
+import { Footer } from './Footer';
+import { IsolaBoschetto } from './IsolaBoschetto';
 
 export function App() {
   return (
@@ -11,10 +15,10 @@ export function App() {
           <Route exact path="/Lorynn_Kingdom">
             <Home />
           </Route>
-          <Route path="/Lorynn_Kingdom/IsolaDelFaro">
+          <Route path="/Lorynn_Kingdom/Isola_del_Faro">
             <IsolaDelFaro />
           </Route>
-          <Route path="/Lorynn_Kingdom/IsolaBoschetto">
+          <Route path="/Lorynn_Kingdom/Isola_del_Boschetto">
             <IsolaBoschetto />
           </Route>
           <Route path="/">
@@ -47,7 +51,7 @@ export const clickHandler = (x, y) => {
    *  x: 545 - 605
    * */
   if ((x >= 545 && x <= 605) && (y >= 141 && y <= 187)) {
-    clickPos = "IsolaBoschetto"
+    clickPos = "Isola_del_Boschetto"
 
   }
   /**
@@ -55,7 +59,7 @@ export const clickHandler = (x, y) => {
    * y: 118 - 148
    */
   else if ((x >= 474 && x <= 515) && (y >= 118 && y <= 148)) {
-    clickPos = "IsolaDelFaro"
+    clickPos = "Isola_del_Faro"
   }
   else
     clickPos = "not registered"
@@ -70,12 +74,9 @@ function Home() {
 
   return (
     <div className="App">
-      <Head whereAreYou={match.url}
-      // temp ={clickHandler(position.x - position.posX, position.y - position.posY)} 
-      />
+      <Head whereAreYou={match.url} />
       <div className="container">
         <div className="test-map" onClick={() => {
-          // <Redirect to = {`${match.path}/${clickHandler(position.x - position.posX, position.y - position.posY)}`} />
           history.push(match.path+clickHandler(position.x - position.posX, position.y - position.posY))
         }
         }>
@@ -85,52 +86,4 @@ function Home() {
       <Footer position={position}/>
     </div>
   )
-
-  function Head({whereAreYou}) {
-    let location = whereAreYou.replace("/","")
-    location = location.replace("_"," ")
-    return (
-    <div className="header">
-      Ciao, benvenuto in <br />
-      {location}
-    </div>
-    )
-  }
-}
-
-function Footer({position}) {
-  return (
-    <div className="footer">
-      <div>
-        {
-        isNaN(position.x - position.posX) ?
-          ""
-          :
-          position.x - position.posX + " : "
-        }
-        {
-          isNaN(position.y - position.posY) ?
-            ""
-            :
-            position.y - position.posY}
-        <br />
-      </div>
-    </div>
-  )
-}
-
-function IsolaDelFaro() {
-  let history = useHistory();
-  return <>
-    Test
-    <button onClick={() => history.goBack()}>back</button>
-  </>
-}
-
-function IsolaBoschetto() {
-  let history = useHistory();
-  return <>
-    Prova
-    <button onClick={() => history.goBack()}>back</button>
-  </>
 }
