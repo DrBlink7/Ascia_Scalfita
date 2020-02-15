@@ -41,13 +41,13 @@ export const useMousePosition = () => {
 };
 
 function clickHandler(position){
-  console.log((position.x)-(position.posX),((position.y)-position.posY))
+  console.log(position.x-position.posX,position.y-position.posY)
 }
 
 function Home() {
   let position = useMousePosition();
   let x = isNaN(position.x-position.posX) ? position.x-position.posX : 0
-  let y = isNaN(position.y-position.posY) ? position.Y-position.posY : 0
+  let y = isNaN(position.y-position.posY) ? position.y-position.posY : 0
   return (
     <div className="App">
     <div className="header">head</div>
@@ -57,7 +57,7 @@ function Home() {
     </div>
   </div>
   <div className="footer"><div>
-      {position.x-position.posX}:{position.Y-position.posY}<br />
+      {position.x-position.posX}:{position.y-position.posY}<br />
       {x}:{y}
     </div></div>
   </div>
