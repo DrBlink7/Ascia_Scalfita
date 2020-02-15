@@ -27,9 +27,11 @@ export function App() {
 }
 
 export const useMousePosition = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0 ,e: '',posX:0,posY:0});
   useEffect(() => {
-    const setFromEvent = e => setPosition({ x: e.clientX, y: e.clientY });
+    const setFromEvent = e => {
+    setPosition({ x: e.clientX, y: e.clientY ,e: e, posX: e.target.x, posY: e.target.y});
+    }
     window.addEventListener("mousemove", setFromEvent);
     return () => {
       window.removeEventListener("mousemove", setFromEvent);
@@ -39,11 +41,13 @@ export const useMousePosition = () => {
 };
 
 function clickHandler(position){
-  console.log("there",position)
+  console.log((position.x)-(position.posX),((position.y)-position.posY))
 }
 
 function Home() {
-  const position = useMousePosition();
+  let position = useMousePosition();
+  let x = isNaN(position.x-position.posX) ? position.x-position.posX : 0
+  let y = isNaN(position.y-position.posY) ? position.Y-position.posY : 0
   return (
     <div className="App">
     <div className="header">head</div>
@@ -53,7 +57,8 @@ function Home() {
     </div>
   </div>
   <div className="footer"><div>
-      {position.x}:{position.y}
+      {position.x-position.posX}:{position.Y-position.posY}<br />
+      {x}:{y}
     </div></div>
   </div>
   )
