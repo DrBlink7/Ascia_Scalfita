@@ -40,25 +40,22 @@ export const useMousePosition = () => {
   return position;
 };
 
-function clickHandler(position){
-  console.log(position.x-position.posX,position.y-position.posY)
+function clickHandler(x,y){
+  console.log(x,y)
 }
 
 function Home() {
   let position = useMousePosition();
-  let x = isNaN(position.x-position.posX) ? position.x-position.posX : 0
-  let y = isNaN(position.y-position.posY) ? position.y-position.posY : 0
   return (
     <div className="App">
     <div className="header">head</div>
   <div className="container">
-    <div className="test-map" onClick={() => clickHandler(position)}>
+    <div className="test-map" onClick={() => clickHandler(position.x-position.posX, position.y-position.posY)}>
       <img src="/test.png" alt = "test-map"></img>
     </div>
   </div>
   <div className="footer"><div>
       {position.x-position.posX}:{position.y-position.posY}<br />
-      {x}:{y}
     </div></div>
   </div>
   )
