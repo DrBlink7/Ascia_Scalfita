@@ -9,9 +9,7 @@ export function IsolaDelFaro() {
 
   return (
   <div className="delFaro">
-    <Head whereAreYou={match.url}
-    // temp ={clickHandler(position.x - position.posX, position.y - position.posY)} 
-    />
+    <Head whereAreYou={match.url} />
     Test
     <button onClick={() => history.goBack()}>back</button>
   </div>)
