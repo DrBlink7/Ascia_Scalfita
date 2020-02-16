@@ -47,10 +47,16 @@ export function View(containerColor, mapSrc, handlerName) {
 }
 
 export function clickHandler(location, x, y) {
-  let newLocation = "not registered"
+  let newLocation = ""
   location.forEach(loc => {
     if ((x >= loc.xMin && x <= loc.xMax) && (y >= loc.yMin && y <= loc.yMax))
       newLocation = "/" + loc.label
   })
+  if (!newLocation || newLocation.length === 0)
+    return ""
   return newLocation
+}
+
+export function empty (){
+  return ""
 }

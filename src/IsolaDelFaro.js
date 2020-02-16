@@ -1,4 +1,4 @@
-import { View, clickHandler } from './service'
+import { View, clickHandler, empty } from './service'
 import { getIsolaFaroPosition } from './pointOfInterest'
 import './IsoleEsterne.css'
 
@@ -9,4 +9,8 @@ export function IsolaDelFaro() {
 const isolaDelFaroClickHandler = (x, y) => {
   let location = getIsolaFaroPosition()
   return clickHandler(location, x, y)
+}
+
+export function Scogliere(){
+  return View("delFaro","/Cliffs.png",empty)
 }
