@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import { IsolaDelFaro } from './IsolaDelFaro';
-import { IsolaDelBoschetto } from './IsolaBoschetto';
-import { LorynnKingdom } from './LorynnKingdom';
+import { IsolaDelFaro } from './IsolaDelFaro'
+import { IsolaDelBoschetto } from './IsolaBoschetto'
+import { LorynnKingdom } from './LorynnKingdom'
 import './App.css'
 
 export function App() {

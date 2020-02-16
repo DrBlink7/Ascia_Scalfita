@@ -1,33 +1,33 @@
-import React from 'react';
-import { useState, useEffect } from "react";
-import { useHistory, useRouteMatch } from 'react-router-dom';
-import { Head } from './Head';
-import { Footer } from './Footer';
+import React from 'react'
+import { useState, useEffect } from "react"
+import { useHistory, useRouteMatch } from 'react-router-dom'
+import { Head } from './Head'
+import { Footer } from './Footer'
 
 export function cleanUpUrl(whereAreYou) {
-  let location = whereAreYou.replace(/\//gi, ' ');
-  location = location.replace(/_/gi, " ");
-  return location;
+  let location = whereAreYou.replace(/\//gi, ' ')
+  location = location.replace(/_/gi, " ")
+  return location
 }
 
 export const useMousePosition = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0, e: '', posX: 0, posY: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0, e: '', posX: 0, posY: 0 })
   useEffect(() => {
     const setFromEvent = e => {
-      setPosition({ x: e.clientX, y: e.clientY, e: e, posX: e.target.x, posY: e.target.y });
+      setPosition({ x: e.clientX, y: e.clientY, e: e, posX: e.target.x, posY: e.target.y })
     }
-    window.addEventListener("mousemove", setFromEvent);
+    window.addEventListener("mousemove", setFromEvent)
     return () => {
-      window.removeEventListener("click", setFromEvent);
-    };
-  }, []);
-  return position;
-};
+      window.removeEventListener("click", setFromEvent)
+    }
+  }, [])
+  return position
+}
 
 export function View(containerColor, mapSrc, handlerName) {
-  let position = useMousePosition();
-  let history = useHistory();
-  let match = useRouteMatch();
+  let position = useMousePosition()
+  let history = useHistory()
+  let match = useRouteMatch()
   return (
     <div className={containerColor}>
       <Head whereAreYou={match.url} />
@@ -37,11 +37,11 @@ export function View(containerColor, mapSrc, handlerName) {
       }
       <div className="container">
         <div className="map" onClick={() => {
-          history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY));
+          history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY))
         }}>
           <img src={mapSrc} alt={mapSrc}></img>
         </div>
       </div>
       <Footer position={position} />
-    </div>);
+    </div>)
 }

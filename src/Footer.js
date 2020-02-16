@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 export function Footer({ position }) {
   return (<div className="footer">
     <div>
@@ -12,5 +12,5 @@ export function Footer({ position }) {
         position.y - position.posY}
       <br />
     </div>
-  </div>);
+  </div>)
 }
