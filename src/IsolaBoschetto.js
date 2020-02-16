@@ -1,4 +1,5 @@
-import { View } from './service'
+import { View, clickHandler } from './service'
+import { getIsolaBoschettoPosition } from './pointOfInterest'
 import './IsoleEsterne.css'
 
 export function IsolaDelBoschetto() {
@@ -6,10 +7,6 @@ export function IsolaDelBoschetto() {
 }
 
 const isolaDelBoschettoClickHandler = (x, y) => {
-  let clickPos = ""
-  if ((x >= 0 && x <= 1) && (y >= 555 && y <= 556))
-    clickPos = "something"
-  else
-    return ""
-  return "/" + clickPos
+  let location = getIsolaBoschettoPosition()
+  return clickHandler(location, x, y)
 }

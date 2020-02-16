@@ -45,3 +45,12 @@ export function View(containerColor, mapSrc, handlerName) {
       <Footer position={position} />
     </div>)
 }
+
+export function clickHandler(location, x, y) {
+  let newLocation = "not registered"
+  location.forEach(loc => {
+    if ((x >= loc.xMin && x <= loc.xMax) && (y >= loc.yMin && y <= loc.yMax))
+      newLocation = "/" + loc.label
+  })
+  return newLocation
+}
