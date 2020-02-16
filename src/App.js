@@ -13,10 +13,10 @@ export function App() {
           <Route exact path="/Lorynn_Kingdom">
             <LorynnKingdom />
           </Route>
-          <Route path="/Lorynn_Kingdom/Isola_del_Faro">
+          <Route exact path="/Lorynn_Kingdom/Isola_del_Faro">
             <IsolaDelFaro />
           </Route>
-          <Route path="/Lorynn_Kingdom/Isola_del_Boschetto">
+          <Route exact path="/Lorynn_Kingdom/Isola_del_Boschetto">
             <IsolaBoschetto />
           </Route>
           <Route path="/">

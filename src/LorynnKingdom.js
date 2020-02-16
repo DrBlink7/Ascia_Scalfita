@@ -1,11 +1,11 @@
 import { View } from './service'
 
 export function LorynnKingdom(){
-  return View("App","/test.png",LorynnKingdomClickHandler)
+  return View("App","/test.png",lorynnKingdomClickHandler)
 }
 
 
-export const LorynnKingdomClickHandler = (x, y) => {
+const lorynnKingdomClickHandler = (x, y) => {
   let clickPos = ""
   /**
    * x: 696 - 775
