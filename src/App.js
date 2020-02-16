@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { IsolaDelFaro } from './IsolaDelFaro';
-import { IsolaBoschetto } from './IsolaBoschetto';
+import { IsolaDelBoschetto } from './IsolaBoschetto';
 import { LorynnKingdom } from './LorynnKingdom';
 import './App.css'
 
@@ -17,7 +17,7 @@ export function App() {
             <IsolaDelFaro />
           </Route>
           <Route exact path="/Lorynn_Kingdom/Isola_del_Boschetto">
-            <IsolaBoschetto />
+            <IsolaDelBoschetto />
           </Route>
           <Route path="/">
             <Redirect to={"/Lorynn_Kingdom"} />

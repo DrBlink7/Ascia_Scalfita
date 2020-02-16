@@ -1,9 +1,15 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-export function IsolaBoschetto() {
-  let history = useHistory();
-  return <>
-    Prova
-    <button onClick={() => history.goBack()}>back</button>
-  </>;
+import { View } from './service'
+import './IsoleEsterne.css'
+
+export function IsolaDelBoschetto() {
+  return View("delBoschetto", "/Isola_del_Faro.png", isolaDelBoschettoClickHandler)
+}
+
+const isolaDelBoschettoClickHandler = (x, y) => {
+  let clickPos = ""
+  if ((x >= 0 && x <= 1) && (y >= 555 && y <= 556))
+    clickPos = "something"
+  else
+    return ""
+  return "/" + clickPos
 }
