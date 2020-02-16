@@ -11,6 +11,6 @@ const isolaDelFaroClickHandler = (x, y) => {
   return clickHandler(location, x, y)
 }
 
-export function Scogliere(){
-  return View("delFaro","/Cliffs.png",empty)
+export function Scogliere() {
+  return View("delFaro", "/Cliffs.png", empty)
 }

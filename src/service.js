@@ -5,9 +5,13 @@ import { Head } from './Head'
 import { Footer } from './Footer'
 
 export function cleanUpUrl(whereAreYou) {
-  let location = whereAreYou.replace(/\//gi, ' ')
-  location = location.replace(/_/gi, " ")
-  return location
+  let location = whereAreYou.replace(/_/gi, " ")
+  let locations = location.split("/")
+  return locations
+}
+
+export function convertToUrl(path) {
+  return path.replace(/ /gi, "_")
 }
 
 export const useMousePosition = () => {
@@ -31,10 +35,6 @@ export function View(containerColor, mapSrc, handlerName) {
   return (
     <div className={containerColor}>
       <Head whereAreYou={match.url} />
-      {
-        match.url === "/Lorynn_Kingdom" ? "" :
-          <button onClick={() => history.goBack()}>back</button>
-      }
       <div className="container">
         <div className="map" onClick={() => {
           history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY))
@@ -57,6 +57,6 @@ export function clickHandler(location, x, y) {
   return newLocation
 }
 
-export function empty (){
+export function empty() {
   return ""
 }
