@@ -20,7 +20,7 @@ export function App() {
             <IsolaDelBoschetto />
           </Route>
           <Route path="/">
-            <Redirect to={"/Lorynn_Kingdom"} />
+            <Redirect to="/Lorynn_Kingdom" />
           </Route>
         </Switch>
       </div>
