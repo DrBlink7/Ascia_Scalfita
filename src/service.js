@@ -31,6 +31,10 @@ export function View(containerColor, mapSrc, handlerName) {
   return (
     <div className={containerColor}>
       <Head whereAreYou={match.url} />
+      {
+        match.url === "/Lorynn_Kingdom" ? "" :
+          <button onClick={() => history.goBack()}>back</button>
+      }
       <div className="container">
         <div className="map" onClick={() => {
           history.push(match.path + handlerName(position.x - position.posX, position.y - position.posY));
@@ -39,9 +43,5 @@ export function View(containerColor, mapSrc, handlerName) {
         </div>
       </div>
       <Footer position={position} />
-      {
-        match.url === "/Lorynn_Kingdom" ? "" :
-          <button onClick={() => history.goBack()}>back</button>
-      }
     </div>);
 }

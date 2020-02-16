@@ -1,4 +1,4 @@
-import { View } from './service';
+import { View } from './service'
 
 export function LorynnKingdom(){
   return View("App","/test.png",LorynnKingdomClickHandler)
@@ -8,17 +8,17 @@ export function LorynnKingdom(){
 export const LorynnKingdomClickHandler = (x, y) => {
   let clickPos = ""
   /**
-   *  y: 141 - 187
-   *  x: 545 - 605
+   * x: 696 - 775
+   * y: 153 - 210
    * */
-  if ((x >= 545 && x <= 605) && (y >= 141 && y <= 187)) {
+  if ((x >= 696 && x <= 775) && (y >= 153 && y <= 210)) {
     clickPos = "Isola_del_Boschetto"
   }
   /**
-   * x: 474 - 515
-   * y: 118 - 148
+   * x: 604 - 661
+   * y: 123 - 161
    */
-  else if ((x >= 474 && x <= 515) && (y >= 118 && y <= 148)) {
+  else if ((x >= 604 && x <= 661) && (y >= 123 && y <= 161)) {
     clickPos = "Isola_del_Faro"
   }
   else

@@ -1,16 +1,13 @@
-import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
-import { Head } from "./Head";
-import './IsoleEsterne.css';
+import { View } from './service'
+import './IsoleEsterne.css'
 
 export function IsolaDelFaro() {
-  let history = useHistory();
-  let match = useRouteMatch();
+  return View("delFaro","/Isola_del_Faro.png",LorynnKingdomClickHandler)
+}
 
-  return (
-  <div className="delFaro">
-    <Head whereAreYou={match.url} />
-    Test
-    <button onClick={() => history.goBack()}>back</button>
-  </div>)
+export const LorynnKingdomClickHandler = (x, y) => {
+  let clickPos = ""
+
+    clickPos = "not registered"
+  return "/" + clickPos
 }

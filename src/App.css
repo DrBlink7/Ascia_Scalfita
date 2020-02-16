@@ -3,7 +3,7 @@
 }
 .header{
   text-align: center;
-  height: 100px;
+  height: 60px;
 }
 .container{
   display: flex;
@@ -11,8 +11,8 @@
   align-items: center;
 }
 .map{
-  width: 800px;
-  height: 700px;
+  width: 1024px;
+  height: 768px;
   border: 10px solid rebeccapurple;
 }
 .footer{
