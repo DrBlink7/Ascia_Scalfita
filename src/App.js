@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { IsolaDelFaro, Scogliere } from './IsolaDelFaro'
 import { IsolaDelBoschetto } from './IsolaBoschetto'
 import { LorynnKingdom } from './LorynnKingdom'
+import { Fight } from './Fight'
 import './App.css'
 
 export function App() {
@@ -18,6 +19,9 @@ export function App() {
           </Route>
           <Route exact path="/Lorynn_Kingdom/Isola_del_Faro/Le_Grandi_Scogliere">
             <Scogliere />
+          </Route>
+          <Route path="/Lorynn_Kingdom/Isola_del_Faro/:location/Fight">
+            <Fight />
           </Route>
           <Route exact path="/Lorynn_Kingdom/Isola_del_Boschetto">
             <IsolaDelBoschetto />

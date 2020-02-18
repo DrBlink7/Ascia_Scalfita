@@ -14,7 +14,7 @@ export function convertToUrl(path) {
   return path.replace(/ /gi, "_")
 }
 
-export const useMousePosition = () => {
+export function useMousePosition() {
   const [position, setPosition] = useState({ x: 0, y: 0, e: '', posX: 0, posY: 0 })
   useEffect(() => {
     const setFromEvent = e => {
