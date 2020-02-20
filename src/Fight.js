@@ -9,38 +9,47 @@ export function Fight() {
   let { location } = useParams()
   let match = useRouteMatch()
   const [data, setData] = useState({
-    test: [],
+    data: [],
     isLoading: true,
     err: ''
   })
 
   useEffect(() => {
-    getTest()
+    getTest("asd", "fasd", location)
       .then(result => setData({
-        test: result.data,
+        data: result.data,
         isLoading: false,
         err: ''
-      })
-        .catch(err => {
-          setData({
-            test: [],
-            isLoading: false,
-            err: err
-          })
+      }))
+      .catch(err => {
+        setData({
+          data: [],
+          isLoading: false,
+          err: err
         })
-      )
-  }, [])
+      })
+
+  }, [location])
 
   if (data.isLoading)
     return <Loader />
 
-
-  console.log(location)
   return (
     <div>
       <Head whereAreYou={match.url} />
       <div className="Le_Grandi_Scogliere">
+        
+          <span>{data.data.location}</span>
+          <div>
+          {
+            data.data.userData.map(z=>{
+              return <><span>{z.first}</span>
+              <span>{z.last}</span></>
+            })
+            
+          }</div>
 
+        
       </div>
     </div>
   )
