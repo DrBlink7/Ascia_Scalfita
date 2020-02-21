@@ -2,11 +2,6 @@
   color: whitesmoke;
 }
 
-.header {
-  text-align: center;
-  height: 80px;
-}
-
 .container {
   display: flex;
   justify-content: center;
