@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
-import { getTest } from './mockFights'
+import { getUserInfo } from './mockFights'
+import { cleanUpUrl } from './service'
 import { Loader } from './Loader'
 import './Fight.css'
 
@@ -15,7 +16,7 @@ export function Fight() {
   })
 
   useEffect(() => {
-    getTest("asd", "fasd", location)
+    getUserInfo(location)
       .then(result => setData({
         data: result.data,
         isLoading: false,
@@ -34,23 +35,25 @@ export function Fight() {
   if (data.isLoading)
     return <Loader />
 
-  return (
-    <div>
-      <Head whereAreYou={match.url} />
-      <div className="Le_Grandi_Scogliere">
-        
-          <span>{data.data.location}</span>
-          <div>
-          {
-            data.data.userData.map(z=>{
-              return <><span>{z.first}</span>
-              <span>{z.last}</span></>
-            })
-            
-          }</div>
+  console.log(data.data)
+  let arr = {
+    location: location,
+    userData: {
+      first: "Gunnbjorn",
+      last: "dell'Ascia dorata"
+    }
+  }
 
-        
+  return (
+    <>
+      <Head whereAreYou={match.url} />
+      <div className={location}>
+        <div className="location-label">{cleanUpUrl(arr.location)}</div>
+        <div className="usedData">
+          <div className="name">{arr.userData.first}</div>
+          <div className="last">{arr.userData.last}</div> 
+        </div>
       </div>
-    </div>
+    </>
   )
 }
