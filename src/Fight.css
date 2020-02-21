@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    
 }
 
 .Le_Grandi_Scogliere {
@@ -21,3 +20,11 @@
     height: 768px;
     border: 5px solid rebeccapurple;
 }
+
+.combatData {
+    width: 256px;
+    height: 768px;
+    overflow-x: hidden;
+    overflow-x: auto;
+}
+
