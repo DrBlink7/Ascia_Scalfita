@@ -3,7 +3,7 @@ import static spark.Spark.get;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import dal.TestService;
+import dal.UserService;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -49,15 +49,15 @@ public class RouterSparkApplication implements spark.servlet.SparkApplication {
 
 
   private void registerPath() {
-
     var gson = new Gson();
     path("/", () -> {
-      var testService = new TestService();
+      var user = new UserService();
 
-      get("/test/:name/:cognome/:location", (req, res) ->
-      {
-        return testService.prova(req.params(":name"),req.params(":cognome"),req.params(":location"));
-      }, gson::toJson);
+      get("/getUserStat/:loc",(req,res) -> {
+        var username = "test";
+        return user.getUserData(username,req.params(":loc"));
+      },gson::toJson);
+
     });
     path("/api", () -> {
  //Delete this when TBT done   

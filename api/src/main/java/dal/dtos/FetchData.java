@@ -5,9 +5,9 @@ import java.util.List;
 
 public class FetchData {
     private String location;
-    private List<TestDto> userData;
-    public FetchData(String location, ArrayList<TestDto> arr) {
-        this.location = location;
-        this.userData = arr;
+    private userDetailDTO userData;
+    public FetchData(String loc, userDetailDTO user) {
+        this.location = loc;
+        this.userData = user;
     }
 }
