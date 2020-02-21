@@ -29,7 +29,6 @@ export function Fight() {
           err: err
         })
       })
-
   }, [location])
 
   if (data.isLoading)
@@ -48,10 +47,20 @@ export function Fight() {
     <>
       <Head whereAreYou={match.url} />
       <div className={location}>
-        <div className="location-label">{cleanUpUrl(arr.location)}</div>
-        <div className="usedData">
-          <div className="name">{arr.userData.first}</div>
-          <div className="last">{arr.userData.last}</div> 
+        <div className="body">
+          <div className="usedData">
+            <div className="name">{arr.userData.first}</div>
+            <div className="last">{arr.userData.last}</div>
+          </div>
+          <div className="combatData">
+            <div>
+              combat state
+            </div>
+          </div>
+          <div className="monsterData">
+            <div className="name">{arr.userData.first}</div>
+            <div className="last">{arr.userData.last}</div>
+          </div>
         </div>
       </div>
     </>

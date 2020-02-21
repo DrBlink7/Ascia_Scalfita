@@ -1,8 +1,23 @@
-.Le_Grandi_Scogliere{
+.body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+}
+
+.Le_Grandi_Scogliere {
     color: #555555;
     background-color: silver;
 }
 
-.location-label{
- 
+.usedData {
+    width: 512px;
+    height: 768px;
+    border: 5px solid rebeccapurple;
+}
+
+.monsterData {
+    width: 512px;
+    height: 768px;
+    border: 5px solid rebeccapurple;
 }
