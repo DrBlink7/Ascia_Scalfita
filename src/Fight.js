@@ -50,17 +50,17 @@ export function Fight() {
       <div className={location}>
         <div className="body">
           <div className="userData">
-            <div className="first-last">
+            <div className="detail">
               <div className="name">{data.data.userData.first}</div>
               <div className="last">{data.data.userData.last !== null ? data.data.userData.last : ""}</div>
             </div>
             <div className="buttons"><div className="button" onClick={() => userAction("Attacco")}>Attacco</div></div>
           </div>
           <div className="combatData">
-            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map(x => { return (<> {x} <br /> </>)})} </div>
+            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map(x => { return (<> {x} <hr className="hr"/> </>)})} </div>
           </div>
           <div className="monsterData">
-            <div className="first-last">
+            <div className="monsterDetail">
               <div className="name">{monster.userData.first}</div>
               <div className="last">{monster.userData.last === null ? "" : monster.userData.last} </div>
             </div>

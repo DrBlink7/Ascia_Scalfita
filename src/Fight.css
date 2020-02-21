@@ -17,20 +17,21 @@
     flex-direction: column;
 }
 
-.first-last{
+.detail {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: 400px;
 }
 
-.buttons{
+.buttons {
     display: flex;
     align-content: flex-end;
-    height: 400px;
+    height: 368px;
     border: springgreen 1px solid;
 }
 
-.button{
+.button {
     background-color: #666;
     border: none;
     border-radius: 4px;
@@ -39,8 +40,8 @@
     color: white;
     text-transform: uppercase;
     outline: none;
-    margin-top: 3vmin;
     font-weight: 600;
+    height: 20px;    
 }
 
 .combatData {
@@ -51,6 +52,12 @@
     overflow-x: auto;
 }
 
+.hr {
+    border: none;
+    height: 1px;
+    background-color: #888;
+}
+
 .monsterData {
     display: flex;
     width: 512px;
@@ -59,4 +66,8 @@
     flex-direction: column;
 }
 
-
+.monsterDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
