@@ -27,10 +27,11 @@
 .buttons {
     display: flex;
     height: 368px;
-    border: springgreen 1px solid;
+    border: 1px solid greenyellow;
 }
 
 .button {
+    display: flex;
     background-color: #666;
     border: none;
     border-radius: 4px;
@@ -53,6 +54,7 @@
     height: 768px;
     overflow-x: hidden;
     overflow-x: auto;
+    border: 1px solid snow;
 }
 
 .hr {

@@ -131,12 +131,12 @@ export function Fight() {
             </div>
             <div className="buttons">
               {
-                user.userSkill.skills.map(button => {
+                user.userSkill.skills.map((button,i) => {
                   return (
-                  <>
+                  <span key = {i}>
                     <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
-                    <div className="spaced"/>
-                  </>
+                    <div className="spaced" />
+                  </span>
                 )})
               }
             </div>
