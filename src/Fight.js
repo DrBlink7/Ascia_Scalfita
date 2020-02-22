@@ -125,24 +125,31 @@ export function Fight() {
         <div className="body">
           <div className="userData">
             <div className="detail">
-              <div className="name">{user.userData.first}</div>
-              <div className="last">{user.userData.last !== null ? data.userData.userData.last : ""}</div>
-              <img src={user.userData.image} alt="charImg"/>
+              <div className="first">
+                {user.userData.first}
+              </div>
+              <div className="center">
+                {user.userData.last !== null ? data.userData.userData.last : ""}
+              </div>
+              <div className="last">
+                <img src={user.userData.image} alt="charImg" />
+              </div>
             </div>
             <div className="buttons">
               {
-                user.userSkill.skills.map((button,i) => {
-                  return (
-                  <span key = {i}>
-                    <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
-                    <div className="spaced" />
-                  </span>
-                )})
+                user.userSkill.skills.map((button, i) => {
+                    return (
+                    <div key = {i}>
+                      <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
+                      <div className="spaced" />
+                    </div>
+                  )
+                })
               }
             </div>
           </div>
           <div className="combatData">
-            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map(x => { return (<> {x} <hr className="hr" /> </>) })} </div>
+            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map((x, i) => { return (<span key={i}> {x} <hr className="hr" key={i} /> </span>) })} </div>
           </div>
           <div className="monsterData">
             <div className="monsterDetail">
