@@ -65,51 +65,6 @@ export function Fight() {
           weaponDmg: weaponDmg2
         },
         {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
-          label: "Special",
-          weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
-        },
-        {
           label: "Daily",
           weaponName: "Battle Axe",
           weaponDmg: weaponDmg3
@@ -138,8 +93,8 @@ export function Fight() {
             <div className="buttons">
               {
                 user.userSkill.skills.map((button, i) => {
-                    return (
-                    <div key = {i}>
+                  return (
+                    <div key={i}>
                       <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
                       <div className="spaced" />
                     </div>
@@ -149,7 +104,18 @@ export function Fight() {
             </div>
           </div>
           <div className="combatData">
-            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map((x, i) => { return (<span key={i}> {x} <hr className="hr" key={i} /> </span>) })} </div>
+            <div>
+              {
+                data.combatAction.length === 0 ? "" :
+                  data.combatAction.slice(0).reverse().map((x, i) => {
+                    return (
+                      <span key={i}>
+                        {x} <hr className="hr" key={i} />
+                      </span>
+                    )
+                  })
+              }
+            </div>
           </div>
           <div className="monsterData">
             <div className="monsterDetail">

@@ -41,7 +41,6 @@
     display: flex;
     justify-content: flex-start;
     width: 512px;
-    border: 1px solid greenyellow;
     flex-wrap: wrap;
 }
 
@@ -73,7 +72,6 @@
     height: 768px;
     overflow-x: hidden;
     overflow-x: auto;
-    border: 1px solid snow;
 }
 
 .hr {
