@@ -36,11 +36,31 @@ export function Fight() {
   if (data.isLoading)
     return <Loader />
 
-  let monster = {
+  let weaponDmg1 = 1,weaponDmg2 = 3,weaponDmg3 = 10
+
+  let user = {
     location: location,
     userData: {
       first: "Gunnbjorn",
-      last: "dell'Ascia dorata"
+      last: "Dell'ascia dorata"
+    },
+    userSkill: {
+      skills: [
+        {
+          label: "Attacco",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg1
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Daily",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg3
+        }]
     }
   }
 
@@ -51,18 +71,24 @@ export function Fight() {
         <div className="body">
           <div className="userData">
             <div className="detail">
-              <div className="name">{data.data.userData.first}</div>
-              <div className="last">{data.data.userData.last !== null ? data.data.userData.last : ""}</div>
+              <div className="name">{user.userData.first}</div>
+              <div className="last">{user.userData.last !== null ? data.data.userData.last : ""}</div>
             </div>
-            <div className="buttons"><div className="button" onClick={() => userAction("Attacco")}>Attacco</div></div>
+            <div className="buttons">
+              {
+                user.userSkill.skills.map(button => {
+                  return <div className="button" onClick={() => userAction(user.userData.first,button)}>{button.label}</div>
+                })
+              }
+            </div>
           </div>
           <div className="combatData">
-            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map(x => { return (<> {x} <hr className="hr"/> </>)})} </div>
+            <div> {data.combatAction.length === 0 ? "" : data.combatAction.map(x => { return (<> {x} <hr className="hr" /> </>) })} </div>
           </div>
           <div className="monsterData">
             <div className="monsterDetail">
-              <div className="name">{monster.userData.first}</div>
-              <div className="last">{monster.userData.last === null ? "" : monster.userData.last} </div>
+              <div className="name">{data.data.userData.first}</div>
+              <div className="last">{data.data.userData.last === null ? "" : data.data.userData.last} </div>
             </div>
           </div>
         </div>
@@ -70,10 +96,14 @@ export function Fight() {
     </>
   )
 
-  function userAction(action) {
+  function userAction(username,action) {
+    let dmgLabel = action.weaponDmg >1 ? " danni" : " danno"
+    let dmg = action.weaponDmg >= 0 ? action.weaponDmg : "nessun"
+    let response = username+" effettua "+action.label+" con "+action.weaponName+" causando "+dmg+dmgLabel
+    
     setData({
       data: data.data,
-      combatAction: data.combatAction.concat(action),
+      combatAction: data.combatAction.concat(response),
       isLoading: false,
       err: ''
     })
