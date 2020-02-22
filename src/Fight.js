@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
-import { getUserInfo } from './mockFights'
+import { getUserInfo, getMonsterAction } from './mockFights'
 import { Loader } from './Loader'
 import './Fight.css'
 
@@ -12,7 +12,7 @@ export function Fight() {
     userData: [],
     combatAction: [],
     monsterData: [],
-    monsterAction: false,
+    needMonsterAction: false,
     isLoading: true,
     err: ''
   })
@@ -23,7 +23,7 @@ export function Fight() {
         userData: result.data,
         combatAction: [],
         monsterData: [],
-        monsterAction: false,
+        needMonsterAction: false,
         isLoading: false,
         err: ''
       }))
@@ -32,7 +32,7 @@ export function Fight() {
           userData: [],
           combatAction: [],
           monsterData: [],
-          monsterAction: false,
+          needMonsterAction: false,
           isLoading: false,
           err: err
         })
@@ -146,10 +146,16 @@ export function Fight() {
       userData: data.userData,
       combatAction: data.combatAction.concat(response),
       monsterData: [],
-      monsterAction: false,
+      needMonsterAction: false,
       isLoading: false,
       err: ''
     })
+
+    monsterAction()
+  }
+
+  function monsterAction(){
+    
   }
 
 }
