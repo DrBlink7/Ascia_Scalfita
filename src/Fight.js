@@ -13,24 +13,23 @@ export function Fight() {
     combatAction: [],
     monsterData: [],
     monsterAction: '',
-    turn: 0,
+    turn: 1,
     needMonsterAction: false,
     isLoading: true,
     err: ''
   })
 
   useEffect(() => {
-
     Promise
       .all([getUserInfo(location), getMonsterAction(location,"Mostro")])
       .then(([user, monsterAct]) => {
         setData({
           userData: user.data,
-          combatAction: [],
+          combatAction: data.combatAction,
           monsterData: [],
           monsterAction: monsterAct.data,
           needMonsterAction: false,
-          turn: data.turn+1,
+          turn: data.turn,
           isLoading: false,
           err: ''
         })
@@ -47,7 +46,7 @@ export function Fight() {
           err: err
         })
       })
-  }, [location,data.turn])
+  }, [data.turn,location,data.combatAction])
 
   if (data.isLoading)
     return <Loader />
@@ -148,10 +147,11 @@ export function Fight() {
   )
 
   function userAction(username, action) {
+
     let dmgLabel = action.weaponDmg > 1 ? " danni" : " danno"
     let dmg = action.weaponDmg >= 0 ? action.weaponDmg : "nessun"
-    let response = username + " effettua " + action.label + " con " + action.weaponName + " causando " + dmg + dmgLabel
-
+    let userResponse = "Turn: "+data.turn+"\n"+username + " effettua " + action.label + " con " + action.weaponName + " causando " + dmg + dmgLabel
+    let response = userResponse+"\n"+data.userData.userData.first+" causa "+data.monsterAction+ " danni"
     setData({
       userData: data.userData,
       combatAction: data.combatAction.concat(response),
@@ -163,12 +163,6 @@ export function Fight() {
       err: ''
     })
 
-    monsterAction()
-  }
-
-  function monsterAction() {
-    console.log("monster attacked",data.monsterAction)
-    
   }
 
 }
