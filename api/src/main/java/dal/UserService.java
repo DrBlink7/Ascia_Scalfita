@@ -14,4 +14,9 @@ public class UserService {
 
         return new FetchData(location,userDetail);
     }
+
+    public Integer getMonsterDmg(String username, String location, String monsterName) {
+
+        return (int)(Math.random()*100);
+    }
 }

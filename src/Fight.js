@@ -12,26 +12,33 @@ export function Fight() {
     userData: [],
     combatAction: [],
     monsterData: [],
+    monsterAction: "",
     needMonsterAction: false,
     isLoading: true,
     err: ''
   })
 
   useEffect(() => {
-    getUserInfo(location)
-      .then(result => setData({
-        userData: result.data,
-        combatAction: [],
-        monsterData: [],
-        needMonsterAction: false,
-        isLoading: false,
-        err: ''
-      }))
+
+    Promise
+      .all([getUserInfo(location), getMonsterAction()])
+      .then(([user, monsterAct]) => {
+        setData({
+          userData: user.data,
+          combatAction: [],
+          monsterData: [],
+          monsterAction: "",
+          needMonsterAction: false,
+          isLoading: false,
+          err: ''
+        })
+      })
       .catch(err => {
         setData({
           userData: [],
           combatAction: [],
           monsterData: [],
+          monsterAction: "",
           needMonsterAction: false,
           isLoading: false,
           err: err
@@ -146,6 +153,7 @@ export function Fight() {
       userData: data.userData,
       combatAction: data.combatAction.concat(response),
       monsterData: [],
+      monsterAction: "",
       needMonsterAction: false,
       isLoading: false,
       err: ''
@@ -154,8 +162,8 @@ export function Fight() {
     monsterAction()
   }
 
-  function monsterAction(){
-    
+  function monsterAction() {
+
   }
 
 }

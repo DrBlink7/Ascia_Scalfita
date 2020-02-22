@@ -52,10 +52,16 @@ public class RouterSparkApplication implements spark.servlet.SparkApplication {
     var gson = new Gson();
     path("/", () -> {
       var user = new UserService();
+      var monster = new UserService();//need to implement monster class
 
       get("/getUserStat/:loc",(req,res) -> {
         var username = "test";
         return user.getUserData(username,req.params(":loc"));
+      },gson::toJson);
+
+      get("/getMonsterAction/:loc/:monster",(req,res) -> {
+        var username = "test";
+        return user.getMonsterDmg(username,req.params(":loc"),req.params(":monster"));
       },gson::toJson);
 
     });
