@@ -81,13 +81,21 @@ export function Fight() {
           <div className="userData">
             <div className="detail">
               <div className="first">
-                {user.userData.first}
+                <div className="skillLabel">{user.userData.first}</div>
+                <div className="skillLabel">{user.userData.first}</div>
+                <div className="skillLabel">{user.userData.first}</div>
+                <div className="skillLabel">{user.userData.first}</div>
               </div>
               <div className="center">
-                {user.userData.last !== null ? data.userData.userData.last : ""}
+                <div className="skillValue">{user.userData.last !== null ? data.userData.userData.last : ""}</div>
+                <div className="skillValue">{user.userData.first}</div>
+                <div className="skillValue">{user.userData.first}</div>
               </div>
               <div className="last">
-                <img src={user.userData.image} alt="charImg" />
+                <div className="img"><img src={user.userData.image} alt="charImg" /></div>
+                <div className="skillValue">{user.userData.first}</div>
+                <div className="skillValue">{user.userData.first}</div>
+                <div className="skillValue">{user.userData.first}</div>
               </div>
             </div>
             <div className="buttons">
@@ -95,6 +103,7 @@ export function Fight() {
                 user.userSkill.skills.map((button, i) => {
                   return (
                     <div key={i}>
+                      <div className="spaced" />
                       <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
                       <div className="spaced" />
                     </div>

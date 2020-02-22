@@ -26,15 +26,32 @@
 }
 
 .first{
-    height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.skillLabel{
+    text-align: center;
 }
 
 .center{
-    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.skillValue{
+    text-align: center;
 }
 
 .last{
-    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.img{
+    height: 350px;
 }
 
 .buttons {
