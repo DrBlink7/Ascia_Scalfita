@@ -26,7 +26,6 @@
 
 .buttons {
     display: flex;
-    align-content: flex-end;
     height: 368px;
     border: springgreen 1px solid;
 }
@@ -42,6 +41,10 @@
     outline: none;
     font-weight: 600;
     height: 20px;    
+}
+
+.spaced{
+    margin: 10px;
 }
 
 .combatData {

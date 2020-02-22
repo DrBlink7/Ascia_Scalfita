@@ -12,7 +12,7 @@ export function Fight() {
     userData: [],
     combatAction: [],
     monsterData: [],
-monsterAction: false,
+    monsterAction: false,
     isLoading: true,
     err: ''
   })
@@ -23,7 +23,7 @@ monsterAction: false,
         userData: result.data,
         combatAction: [],
         monsterData: [],
-monsterAction: false,
+        monsterAction: false,
         isLoading: false,
         err: ''
       }))
@@ -32,7 +32,7 @@ monsterAction: false,
           userData: [],
           combatAction: [],
           monsterData: [],
-monsterAction: false,
+          monsterAction: false,
           isLoading: false,
           err: err
         })
@@ -43,12 +43,14 @@ monsterAction: false,
     return <Loader />
 
   let weaponDmg1 = 1, weaponDmg2 = 3, weaponDmg3 = 10
+  let imgPath = "/character/DolmenZarkanan.png"
 
   let user = {
     location: location,
     userData: {
       first: "Gunnbjorn",
-      last: "Dell'ascia dorata"
+      last: "Dell'ascia dorata",
+      image: imgPath
     },
     userSkill: {
       skills: [
@@ -63,10 +65,56 @@ monsterAction: false,
           weaponDmg: weaponDmg2
         },
         {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
+          label: "Special",
+          weaponName: "Battle Axe",
+          weaponDmg: weaponDmg2
+        },
+        {
           label: "Daily",
           weaponName: "Battle Axe",
           weaponDmg: weaponDmg3
-        }]
+        }
+      ]
     }
   }
 
@@ -79,12 +127,17 @@ monsterAction: false,
             <div className="detail">
               <div className="name">{user.userData.first}</div>
               <div className="last">{user.userData.last !== null ? data.userData.userData.last : ""}</div>
+              <img src={user.userData.image} alt="charImg"/>
             </div>
             <div className="buttons">
               {
                 user.userSkill.skills.map(button => {
-                  return <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
-                })
+                  return (
+                  <>
+                    <div className="button" onClick={() => userAction(user.userData.first, button)}>{button.label}</div>
+                    <div className="spaced"/>
+                  </>
+                )})
               }
             </div>
           </div>
@@ -111,7 +164,7 @@ monsterAction: false,
       userData: data.userData,
       combatAction: data.combatAction.concat(response),
       monsterData: [],
-monsterAction: false,
+      monsterAction: false,
       isLoading: false,
       err: ''
     })
