@@ -96,7 +96,7 @@ export function Fight() {
                 <div className="skillLabel">{user.userData.first}</div>
               </div>
               <div className="center">
-                <div className="skillValue">{user.userData.last !== null ? data.userData.userData.last : ""}</div>
+                <div className="skillValue">{user.userData.last !== null ? user.userData.last : ""}</div>
                 <div className="skillValue">{user.userData.first}</div>
                 <div className="skillValue">{user.userData.first}</div>
               </div>
