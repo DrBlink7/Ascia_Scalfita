@@ -126,9 +126,20 @@ export function Fight() {
               {
                 data.combatAction.length === 0 ? "" :
                   data.combatAction.slice(0).reverse().map((x, i) => {
+                    let a = x.split("\n")
                     return (
                       <span key={i}>
-                        {x} <hr className="hr" key={i} />
+                        {
+                          a.map(y=>{
+                            return(
+                            <>
+                            {y}
+                            <br />
+                            </>
+                            )
+                          })
+                        }
+                        <hr className="hr" key={i} />
                       </span>
                     )
                   })
