@@ -61,6 +61,10 @@
     flex-wrap: wrap;
 }
 
+.hidden {
+    display: none;
+}
+
 .button {
     display: flex;
     background-color: #666;

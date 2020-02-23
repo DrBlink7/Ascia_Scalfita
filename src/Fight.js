@@ -14,7 +14,7 @@ export function Fight() {
     monsterData: [],
     monsterAction: '',
     turn: 1,
-    needMonsterAction: false,
+    combatEnded: false,
     isLoading: true,
     err: ''
   })
@@ -27,8 +27,9 @@ export function Fight() {
           userData: user.data,
           combatAction: data.combatAction,
           monsterData: [],
-          monsterAction: monsterAct.data,
-          needMonsterAction: false,
+          monsterAction: monsterAct.data.damage,
+          combatEndNextT: monsterAct.data.combatEnd, 
+          combatEnded: data.combatEnded,
           turn: data.turn,
           isLoading: false,
           err: ''
@@ -40,13 +41,14 @@ export function Fight() {
           combatAction: [],
           monsterData: [],
           monsterAction: '',
-          needMonsterAction: false,
+          combatEndNextT: false,
+          combatEnded: false,
           turn: 0,
           isLoading: false,
           err: err
         })
       })
-  }, [data.turn,location,data.combatAction])
+  }, [data.turn,location,data.combatAction,data.combatEnded])
 
   if (data.isLoading)
     return <Loader />
@@ -107,7 +109,7 @@ export function Fight() {
                 <div className="skillValue">{user.userData.first}</div>
               </div>
             </div>
-            <div className="buttons">
+            <div className={data.combatEnded ? "hidden" : "buttons"}>
               {
                 user.userSkill.skills.map((button, i) => {
                   return (
@@ -163,12 +165,14 @@ export function Fight() {
     let dmg = action.weaponDmg >= 0 ? action.weaponDmg : "nessun"
     let userResponse = "Turn: "+data.turn+"\n"+username + " effettua " + action.label + " con " + action.weaponName + " causando " + dmg + dmgLabel
     let response = userResponse+"\n"+data.userData.userData.first+" causa "+data.monsterAction+ " danni"
+
     setData({
       userData: data.userData,
       combatAction: data.combatAction.concat(response),
       monsterData: [],
       monsterAction: data.monsterAction,
-      needMonsterAction: true,
+      combatEndNextT: data.combatEndNextT,
+      combatEnded: data.combatEndNextT ? true : false,
       turn: data.turn+1,
       isLoading: false,
       err: ''
