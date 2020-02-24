@@ -15,8 +15,8 @@ public class UserService {
     }
 
     public MonsterDmg getMonsterDmg(String username, String location, String monsterName) {
-        var combatEnd = true;
         var rand = (int)(Math.random()*100);
+        var combatEnd = rand % 2 == 0 ? true : false;
         var result = new MonsterDmg(combatEnd,rand);
         return result;
     }
