@@ -59,10 +59,18 @@ public class RouterSparkApplication implements spark.servlet.SparkApplication {
         return user.getUserData(username,req.params(":loc"));
       },gson::toJson);
 
-      get("/getMonsterAction/:loc/:monster",(req,res) -> {
+      get("/getMonsterAction/:loc/:monster/:dmg",(req,res) -> {
         var username = "test";
-        return user.getMonsterDmg(username,req.params(":loc"),req.params(":monster"));
+        return user.getMonsterDmg(username,req.params(":loc"),req.params(":monster"), Integer.valueOf(req.params(":dmg")));
       },gson::toJson);
+
+      put("/userDmg/:loc/:monster",(req,res) -> {
+        var username = "test";
+        Integer dmg = new Gson().fromJson(req.body(), new TypeToken<Integer>() {
+        }.getType());
+        System.out.println(dmg);
+        return  user.setUserDmg(username,dmg,req.params(":loc"),req.params(":monster"));
+      });
 
     });
     path("/api", () -> {

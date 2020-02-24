@@ -21,14 +21,14 @@ export function Fight() {
 
   useEffect(() => {
     Promise
-      .all([getUserInfo(location), getMonsterAction(location,"Mostro")])
+      .all([getUserInfo(location), getMonsterAction(location, "Mostro",0)])
       .then(([user, monsterAct]) => {
         setData({
           userData: user.data,
           combatAction: data.combatAction,
           monsterData: [],
           monsterAction: monsterAct.data.damage,
-          combatEndNextT: monsterAct.data.combatEnd, 
+          combatEndNextT: monsterAct.data.combatEnd,
           combatEnded: data.combatEnded,
           turn: data.turn,
           isLoading: false,
@@ -48,7 +48,7 @@ export function Fight() {
           err: err
         })
       })
-  }, [data.turn,location,data.combatAction,data.combatEnded])
+  }, [data.turn, location, data.combatAction, data.combatEnded])
 
   if (data.isLoading)
     return <Loader />
@@ -129,12 +129,12 @@ export function Fight() {
                     return (
                       <span key={i}>
                         {
-                          row.map((r,y)=>{
-                            return(
-                            <span key = {y}>
-                            {r}
-                            <br />
-                            </span>
+                          row.map((r, y) => {
+                            return (
+                              <span key={y}>
+                                {r}
+                                <br />
+                              </span>
                             )
                           })
                         }
@@ -160,8 +160,11 @@ export function Fight() {
 
     let dmgLabel = action.weaponDmg > 1 ? " danni" : " danno"
     let dmg = action.weaponDmg >= 0 ? action.weaponDmg : "nessun"
-    let userResponse = "Turn: "+data.turn+"\n"+username + " effettua " + action.label + " con " + action.weaponName + " causando " + dmg + dmgLabel
-    let response = userResponse+"\n"+data.userData.userData.first+" causa "+data.monsterAction+ " danni"
+    let userResponse = "Turn: " + data.turn + "\n" + username + " effettua " + action.label + " con " + action.weaponName + " causando " + dmg + dmgLabel
+    let response = userResponse + "\n" + data.userData.userData.first + " causa " + data.monsterAction + " danni"
+
+    setDmg(action.weaponDmg,location,"Mostro")
+
 
     setData({
       userData: data.userData,
@@ -170,11 +173,24 @@ export function Fight() {
       monsterAction: data.monsterAction,
       combatEndNextT: data.combatEndNextT,
       combatEnded: data.combatEndNextT ? true : false,
-      turn: data.turn+1,
+      turn: data.turn + 1,
       isLoading: false,
       err: ''
     })
+  }
 
+  function setDmg(dmg,location,monsterName) {
+    fetch('/userDmg/'+location+'/'+monsterName, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(
+        dmg
+      )
+    })
   }
 
 }
+
