@@ -53,32 +53,29 @@ export function Fight() {
   if (data.isLoading)
     return <Loader />
 
-  let weaponDmg1 = 1, weaponDmg2 = 3, weaponDmg3 = 10
-  let imgPath = "/character/DolmenZarkanan.png"
-
   let user = {
     location: location,
     userData: {
       first: "Gunnbjorn",
       last: "Dell'ascia dorata",
-      image: imgPath
+      image: "/character/DolmenZarkanan.png"
     },
     userSkill: {
       skills: [
         {
           label: "Attacco",
           weaponName: "Battle Axe",
-          weaponDmg: weaponDmg1
+          weaponDmg: 1
         },
         {
           label: "Special",
           weaponName: "Battle Axe",
-          weaponDmg: weaponDmg2
+          weaponDmg: 3
         },
         {
           label: "Daily",
           weaponName: "Battle Axe",
-          weaponDmg: weaponDmg3
+          weaponDmg: 10
         }
       ]
     }
