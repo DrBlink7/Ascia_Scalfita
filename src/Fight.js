@@ -13,6 +13,7 @@ export function Fight() {
     combatAction: [],
     monsterData: [],
     monsterAction: '',
+    userDmg: -1,
     turn: 1,
     combatEnded: false,
     isLoading: true,
@@ -21,7 +22,7 @@ export function Fight() {
 
   useEffect(() => {
     Promise
-      .all([getUserInfo(location), getMonsterAction(location, "Mostro",0)])
+      .all([getUserInfo(location), getMonsterAction(location, "Mostro",data.userDmg)])
       .then(([user, monsterAct]) => {
         setData({
           userData: user.data,
@@ -30,6 +31,7 @@ export function Fight() {
           monsterAction: monsterAct.data.damage,
           combatEndNextT: monsterAct.data.combatEnd,
           combatEnded: data.combatEnded,
+          userDmg: data.userDmg,
           turn: data.turn,
           isLoading: false,
           err: ''
@@ -43,6 +45,7 @@ export function Fight() {
           monsterAction: '',
           combatEndNextT: false,
           combatEnded: false,
+          userDmg: -1,
           turn: 0,
           isLoading: false,
           err: err
@@ -80,6 +83,8 @@ export function Fight() {
       ]
     }
   }
+
+  console.log("asd: ",data.userDmg)
 
   return (
     <>
@@ -173,6 +178,7 @@ export function Fight() {
       monsterAction: data.monsterAction,
       combatEndNextT: data.combatEndNextT,
       combatEnded: data.combatEndNextT ? true : false,
+      userDmg: action.weaponDmg,
       turn: data.turn + 1,
       isLoading: false,
       err: ''
