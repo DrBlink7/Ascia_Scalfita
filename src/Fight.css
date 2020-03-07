@@ -79,6 +79,15 @@
     height: 20px;
     margin: 10px;
     width: 80px;
+}.back{
+    width: 300px;
+    margin-right: 3vmin;
+    align-self: center;
+}
+
+.back-ico{
+    margin-left: 3vmin;
+    display: flex; 
 }
 
 .spaced{
