@@ -3,6 +3,9 @@ import { useParams, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
 import { getUserInfo, getMonsterAction } from './mockFights'
 import { Loader } from './Loader'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBackward } from '@fortawesome/free-solid-svg-icons'
+import { cleanUpUrl } from './service'
 import './Fight.css'
 
 export function Fight() {
@@ -51,7 +54,7 @@ export function Fight() {
           err: err
         })
       })
-  }, [data.turn, location, data.combatAction, data.combatEnded])
+  }, [data.turn, location, data.combatAction, data.combatEnded,data.userDmg])
 
   if (data.isLoading)
     return <Loader />
@@ -82,6 +85,10 @@ export function Fight() {
         }
       ]
     }
+  }
+  let style = {
+    'alignContent': 'center',
+    'textAlign' : 'center'
   }
 
   console.log("asd: ",data.userDmg)
@@ -123,6 +130,9 @@ export function Fight() {
                   )
                 })
               }
+            </div>
+            <div className={data.combatEnded ? "button back" : "hidden"} onClick={() => backBtn(data)}>
+            <FontAwesomeIcon icon={faBackward} style={style}/><span className="back-ico"> Torna a {cleanUpUrl(location)}</span>
             </div>
           </div>
           <div className="combatData">
@@ -200,3 +210,8 @@ export function Fight() {
 
 }
 
+function backBtn(data){
+  console.log("salva dati combattimento?")
+  console.log(data)
+  window.history.back()
+}
