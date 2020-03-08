@@ -53,7 +53,7 @@ public class RouterSparkApplication implements spark.servlet.SparkApplication {
     path("/", () -> {
       var user = new UserService();
       var monster = new UserService();//need to implement monster class
-
+      var system = new UserService();//need to implement System class
       get("/getUserStat/:loc",(req,res) -> {
         var username = "test";
         return user.getUserData(username,req.params(":loc"));
@@ -69,6 +69,11 @@ public class RouterSparkApplication implements spark.servlet.SparkApplication {
         Integer dmg = new Gson().fromJson(req.body(), new TypeToken<Integer>() {
         }.getType());
         return  user.setUserDmg(username,dmg,req.params(":loc"),req.params(":monster"));
+      });
+
+      get("/isThereFight/:loc",(req,res) -> {
+        var username = "test";
+        return  user.fightOn(username,req.params(":loc"));
       });
 
     });

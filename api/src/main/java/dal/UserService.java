@@ -3,6 +3,7 @@ package dal;
 import dal.dtos.FetchData;
 import dal.dtos.MonsterDmg;
 import dal.dtos.userDetailDTO;
+import org.jetbrains.annotations.NotNull;
 
 public class UserService {
     private userDetailDTO userDetail;
@@ -38,4 +39,14 @@ public class UserService {
         return null;
     }
 
+    public boolean fightOn(String username, @NotNull String location) {
+        System.out.println("user: "+username+" entra in "+location);
+        if(location.compareToIgnoreCase("Le_Grandi_Scogliere") == 0){
+            // query se è già entrato non deve rifarlo
+            var rand = (int)(Math.random()*100);
+            var combatEnd = rand % 2 == 0 ? true : false;
+            return combatEnd;
+        }
+        return false;
+    }
 }
