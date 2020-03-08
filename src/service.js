@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
 import { Footer } from './Footer'
+import { isThereAFight } from './mockFights'
+import { Loader } from './Loader'
 
 export function cleanUpUrl(whereAreYou) {
   let location = whereAreYou.replace(/_/gi, " ")
@@ -20,7 +22,7 @@ export function useMousePosition() {
     const setFromEvent = e => {
       setPosition({ x: e.clientX, y: e.clientY, e: e, posX: e.target.x, posY: e.target.y })
     }
-    window.addEventListener("mousemove", setFromEvent)
+    window.addEventListener("click", setFromEvent)
     return () => {
       window.removeEventListener("click", setFromEvent)
     }
@@ -32,6 +34,36 @@ export function View(containerColor, mapSrc, handlerName) {
   let position = useMousePosition()
   let history = useHistory()
   let match = useRouteMatch()
+  const [fight,setFight] = useState({
+    isOn: false,
+    isLoading: true,
+    error: ''
+  })
+  
+  useEffect(() => {
+    let location = cleanUpUrl(match.url)
+    isThereAFight(convertToUrl(location[location.length-1]))
+    .then(result => {
+      setFight({
+      isOn: result.data,
+      isLoading: false,
+      error: ''
+    })})
+    .catch(err => setFight({
+      isOn: false,
+      isLoading: false,
+      error: err
+    }))
+  },[match.url])
+
+  if(fight.isLoading)
+    return <Loader />
+
+  console.log("fight?",fight.isOn)
+
+  if(fight.isOn)
+    history.push(match.url+'/fight')
+
   return (
     <div className={containerColor}>
       <Head whereAreYou={match.url} />
