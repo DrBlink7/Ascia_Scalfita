@@ -1,4 +1,5 @@
 import React from 'react'
+
 export function Footer({ position }) {
   return (<div className="footer">
     <div>

@@ -9,5 +9,5 @@ export function getMonsterAction(location, monster, dmg) {
 }
 
 export function isThereAFight(location) {
-  return axios.get("/isThereFight/"+ location)
+  return axios.get("/isThereFight/" + location)
 }

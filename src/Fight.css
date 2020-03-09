@@ -25,32 +25,32 @@
     height: 550px;
 }
 
-.first{
+.first {
     display: flex;
     flex-direction: column;
 }
 
-.skillLabel{
+.skillLabel {
     text-align: center;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
 }
 
-.skillValue{
+.skillValue {
     text-align: center;
 }
 
-.last{
+.last {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
 }
 
-.img{
+.img {
     height: 350px;
 }
 
@@ -79,18 +79,20 @@
     height: 20px;
     margin: 10px;
     width: 80px;
-}.back{
+}
+
+.back {
     width: 300px;
     margin-right: 3vmin;
     align-self: center;
 }
 
-.back-ico{
+.back-ico {
     margin-left: 3vmin;
-    display: flex; 
+    display: flex;
 }
 
-.spaced{
+.spaced {
     display: flex;
     margin: 10px;
 }

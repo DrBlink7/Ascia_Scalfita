@@ -25,7 +25,7 @@ export function Fight() {
 
   useEffect(() => {
     Promise
-      .all([getUserInfo(location), getMonsterAction(location, "Mostro",data.userDmg)])
+      .all([getUserInfo(location), getMonsterAction(location, "Mostro", data.userDmg)])
       .then(([user, monsterAct]) => {
         setData({
           userData: user.data,
@@ -54,7 +54,7 @@ export function Fight() {
           err: err
         })
       })
-  }, [data.turn, location, data.combatAction, data.combatEnded,data.userDmg])
+  }, [data.turn, location, data.combatAction, data.combatEnded, data.userDmg])
 
   if (data.isLoading)
     return <Loader />
@@ -88,10 +88,10 @@ export function Fight() {
   }
   let style = {
     'alignContent': 'center',
-    'textAlign' : 'center'
+    'textAlign': 'center'
   }
 
-  console.log("asd: ",data.userDmg)
+  console.log("asd: ", data.userDmg)
 
   return (
     <>
@@ -132,7 +132,7 @@ export function Fight() {
               }
             </div>
             <div className={data.combatEnded ? "button back" : "hidden"} onClick={() => backBtn(data)}>
-            <FontAwesomeIcon icon={faBackward} style={style}/><span className="back-ico"> Torna a {cleanUpUrl(location)}</span>
+              <FontAwesomeIcon icon={faBackward} style={style} /><span className="back-ico"> Torna a {cleanUpUrl(location)}</span>
             </div>
           </div>
           <div className="combatData">
@@ -178,7 +178,7 @@ export function Fight() {
     let userResponse = "Turn: " + data.turn + "\n" + username + " effettua " + action.label + " con " + action.weaponName + " causando " + dmg + dmgLabel
     let response = userResponse + "\n" + data.userData.userData.first + " causa " + data.monsterAction + " danni"
 
-    setDmg(action.weaponDmg,location,"Mostro")
+    setDmg(action.weaponDmg, location, "Mostro")
 
 
     setData({
@@ -195,8 +195,8 @@ export function Fight() {
     })
   }
 
-  function setDmg(dmg,location,monsterName) {
-    fetch('/userDmg/'+location+'/'+monsterName, {
+  function setDmg(dmg, location, monsterName) {
+    fetch('/userDmg/' + location + '/' + monsterName, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -210,7 +210,7 @@ export function Fight() {
 
 }
 
-function backBtn(data){
+function backBtn(data) {
   console.log("salva dati combattimento?")
   console.log(data)
   window.history.back()

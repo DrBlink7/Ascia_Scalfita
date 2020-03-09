@@ -34,35 +34,36 @@ export function View(containerColor, mapSrc, handlerName) {
   let position = useMousePosition()
   let history = useHistory()
   let match = useRouteMatch()
-  const [fight,setFight] = useState({
+  const [fight, setFight] = useState({
     isOn: false,
     isLoading: true,
     error: ''
   })
-  
+
   useEffect(() => {
     let location = cleanUpUrl(match.url)
-    isThereAFight(convertToUrl(location[location.length-1]))
-    .then(result => {
-      setFight({
-      isOn: result.data,
-      isLoading: false,
-      error: ''
-    })})
-    .catch(err => setFight({
-      isOn: false,
-      isLoading: false,
-      error: err
-    }))
-  },[match.url])
+    isThereAFight(convertToUrl(location[location.length - 1]))
+      .then(result => {
+        setFight({
+          isOn: result.data,
+          isLoading: false,
+          error: ''
+        })
+      })
+      .catch(err => setFight({
+        isOn: false,
+        isLoading: false,
+        error: err
+      }))
+  }, [match.url])
 
-  if(fight.isLoading)
+  if (fight.isLoading)
     return <Loader />
 
-  console.log("fight?",fight.isOn)
+  console.log("fight?", fight.isOn)
 
-  if(fight.isOn)
-    history.push(match.url+'/fight')
+  if (fight.isOn)
+    history.push(match.url + '/fight')
 
   return (
     <div className={containerColor}>
