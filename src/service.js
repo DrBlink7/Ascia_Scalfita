@@ -5,6 +5,8 @@ import { Head } from './Head'
 import { Footer } from './Footer'
 import { isThereAFight } from './mockFights'
 import { Loader } from './Loader'
+import * as serv from './pointOfInterest'
+// import {  }
 
 export function cleanUpUrl(whereAreYou) {
   let location = whereAreYou.replace(/_/gi, " ")
@@ -16,13 +18,18 @@ export function convertToUrl(path) {
   return path.replace(/ /gi, "_")
 }
 
+export function getLocationName(url){
+  let location = cleanUpUrl(url)
+  return location[location.length-1]
+}
+
 export function useMousePosition() {
   const [position, setPosition] = useState({ x: 0, y: 0, e: '', posX: 0, posY: 0 })
   useEffect(() => {
     const setFromEvent = e => {
       setPosition({ x: e.clientX, y: e.clientY, e: e, posX: e.target.x, posY: e.target.y })
     }
-    window.addEventListener("click", setFromEvent)
+    window.addEventListener("mousemove", setFromEvent)
     return () => {
       window.removeEventListener("click", setFromEvent)
     }
@@ -59,8 +66,6 @@ export function View(containerColor, mapSrc, handlerName) {
 
   if (fight.isLoading)
     return <Loader />
-
-  console.log("fight?", fight.isOn)
 
   if (fight.isOn)
     history.push(match.url + '/fight')
