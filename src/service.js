@@ -5,8 +5,6 @@ import { Head } from './Head'
 import { Footer } from './Footer'
 import { isThereAFight } from './mockFights'
 import { Loader } from './Loader'
-import * as serv from './pointOfInterest'
-// import {  }
 
 export function cleanUpUrl(whereAreYou) {
   let location = whereAreYou.replace(/_/gi, " ")
@@ -80,7 +78,7 @@ export function View(containerColor, mapSrc, handlerName) {
           <img src={mapSrc} alt={mapSrc}></img>
         </div>
       </div>
-      <Footer position={position} />
+      <Footer position={position} label={getLocationName(handlerName(position.x - position.posX, position.y - position.posY))}/>
     </div>)
 }
 

@@ -1,17 +1,16 @@
 import React from 'react'
 
-export function Footer({ position }) {
-  return (<div className="footer">
-    <div>
-      {isNaN(position.x - position.posX) ?
-        ""
-        :
-        position.x - position.posX + " : "}
-      {isNaN(position.y - position.posY) ?
-        ""
-        :
-        position.y - position.posY}
-      <br />
+export function Footer({ position, label }) {
+  return (
+  <div className="footer">
+    {
+    label === "" ? "" : 
+    <div>Vai a '
+      {
+        label
+      }' ?
     </div>
-  </div>)
+    }
+  </div>
+  )
 }
