@@ -1,7 +1,7 @@
 import React from 'react'
 import { cleanUpUrl, convertToUrl } from "./service"
 import { NavLink } from 'react-router-dom'
-import './Header.css'
+import './css/Header.css'
 
 export function Head({ whereAreYou }) {
   let locations = cleanUpUrl(whereAreYou)

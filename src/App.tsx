@@ -4,7 +4,7 @@ import { IsolaDelFaro, Scogliere } from './IsolaDelFaro'
 import { IsolaDelBoschetto } from './IsolaBoschetto'
 import { LorynnKingdom } from './LorynnKingdom'
 import { Fight } from './Fight'
-import './App.css'
+import './css/App.css'
 
 export function App() {
   return (

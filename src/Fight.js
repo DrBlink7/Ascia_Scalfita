@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
-import { getUserInfo, getMonsterAction } from './mockFights'
+import { getUserInfo, getMonsterAction } from './mockFightsjs'
 import { Loader } from './Loader'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBackward } from '@fortawesome/free-solid-svg-icons'
 import { cleanUpUrl } from './service'
-import './Fight.css'
+import './css/Fight.css'
 
 export function Fight() {
   let { location } = useParams()

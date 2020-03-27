@@ -1,6 +1,6 @@
 import { View, clickHandler, empty } from './service'
 import { getIsolaFaroPosition } from './pointOfInterest'
-import './IsoleEsterne.css'
+import './css/IsoleEsterne.css'
 
 export function IsolaDelFaro() {
   return View("delFaro", "/Isola_del_Faro.png", isolaDelFaroClickHandler)

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
 import { Footer } from './Footer'
-import { isThereAFight } from './mockFights'
+import { isThereAFight } from './mockFightsjs'
 import { Loader } from './Loader'
 
 export function cleanUpUrl(whereAreYou) {
