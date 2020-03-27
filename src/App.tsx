@@ -4,6 +4,7 @@ import { IsolaDelFaro, Scogliere } from './IsolaDelFaro'
 import { IsolaDelBoschetto } from './IsolaBoschetto'
 import { LorynnKingdom } from './LorynnKingdom'
 import { Fight } from './Fight'
+import { Test } from './Test'
 import './css/App.css'
 
 export function App() {
@@ -25,6 +26,9 @@ export function App() {
           </Route>
           <Route exact path="/Lorynn_Kingdom/Isola_del_Boschetto">
             <IsolaDelBoschetto />
+          </Route>
+          <Route path="/Test">
+            <Test />
           </Route>
           <Route path="/">
             <Redirect to="/Lorynn_Kingdom" />
