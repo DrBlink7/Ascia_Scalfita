@@ -3,7 +3,7 @@ import { cleanUpUrl, convertToUrl } from "./service"
 import { NavLink } from 'react-router-dom'
 import './css/Header.css'
 
-export function Head({ whereAreYou }) {
+export function Head({ whereAreYou }:any) {
   let locations = cleanUpUrl(whereAreYou)
   const fight = locations[locations.length - 1].toLowerCase().localeCompare("fight") === 0
   const header = fight ? "" : <div>Ciao, benvenuto a {locations[locations.length - 1]}</div>
@@ -15,7 +15,7 @@ export function Head({ whereAreYou }) {
         fight ? <div className={locations[locations.length - 2]}>
           Un nemico ti sorprende alle spalle mentre attraversi {locations[locations.length - 2]}
         </div> : // eslint-disable-next-line
-          locations.map((button, index) => {
+          locations.map((button:any, index:any) => {
             if (index !== 0 && index !== locations.length - 1) {
               path += "/" + button
               path = convertToUrl(path)

@@ -6,7 +6,7 @@ export function IsolaDelFaro() {
   return View("delFaro", "/Isola_del_Faro.png", isolaDelFaroClickHandler)
 }
 
-const isolaDelFaroClickHandler = (x, y) => {
+const isolaDelFaroClickHandler = (x:any, y:any) => {
   let location = getIsolaFaroPosition()
   return clickHandler(location, x, y)
 }

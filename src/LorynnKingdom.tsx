@@ -5,7 +5,7 @@ export function LorynnKingdom() {
   return View("App", "/test.png", lorynnKingdomClickHandler)
 }
 
-const lorynnKingdomClickHandler = (x, y) => {
+const lorynnKingdomClickHandler = (x:any, y:any) => {
   let location = getLorynnKingdomPosition()
   return clickHandler(location, x, y)
 }

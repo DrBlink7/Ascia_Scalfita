@@ -6,7 +6,7 @@ export function IsolaDelBoschetto() {
   return View("delBoschetto", "/Isola_del_Faro.png", isolaDelBoschettoClickHandler)
 }
 
-const isolaDelBoschettoClickHandler = (x, y) => {
+const isolaDelBoschettoClickHandler = (x:any, y:any) => {
   let location = getIsolaBoschettoPosition()
   return clickHandler(location, x, y)
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Footer({ position, label }) {
+export function Footer({ label }:any) {
   return (
   <div className="footer">
     {

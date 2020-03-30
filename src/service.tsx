@@ -3,20 +3,20 @@ import { useState, useEffect } from "react"
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import { Head } from './Head'
 import { Footer } from './Footer'
-import { isThereAFight } from './mockFightsjs'
+import { isThereAFight } from './mockFights'
 import { Loader } from './Loader'
 
-export function cleanUpUrl(whereAreYou) {
+export function cleanUpUrl(whereAreYou:any) {
   let location = whereAreYou.replace(/_/gi, " ")
   let locations = location.split("/")
   return locations
 }
 
-export function convertToUrl(path) {
+export function convertToUrl(path:any) {
   return path.replace(/ /gi, "_")
 }
 
-export function getLocationName(url){
+export function getLocationName(url:any){
   let location = cleanUpUrl(url)
   return location[location.length-1]
 }
@@ -24,7 +24,7 @@ export function getLocationName(url){
 export function useMousePosition() {
   const [position, setPosition] = useState({ x: 0, y: 0, e: '', posX: 0, posY: 0 })
   useEffect(() => {
-    const setFromEvent = e => {
+    const setFromEvent = (e:any) => {
       setPosition({ x: e.clientX, y: e.clientY, e: e, posX: e.target.x, posY: e.target.y })
     }
     window.addEventListener("mousemove", setFromEvent)
@@ -35,7 +35,7 @@ export function useMousePosition() {
   return position
 }
 
-export function View(containerColor, mapSrc, handlerName) {
+export function View(containerColor:any, mapSrc:any, handlerName:any) {
   let position = useMousePosition()
   let history = useHistory()
   let match = useRouteMatch()
@@ -82,9 +82,9 @@ export function View(containerColor, mapSrc, handlerName) {
     </div>)
 }
 
-export function clickHandler(location, x, y) {
+export function clickHandler(location:any, x:any, y:any) {
   let newLocation = ""
-  location.forEach(loc => {
+  location.forEach((loc:any) => {
     if ((x >= loc.xMin && x <= loc.xMax) && (y >= loc.yMin && y <= loc.yMax))
       newLocation = "/" + loc.label
   })
