@@ -16,12 +16,12 @@ export const Test = () => {
     )
 }
 
-const Body : React.FC<{str:text}> = (str) => {
+const Body : React.FC<{str:text}> = ({str}) => {
     console.log("arriva",str)
     return (
         <span>
             stringa = 
-            {/* '{str}' */}
+            '{str}'
         </span>
     )
 }
